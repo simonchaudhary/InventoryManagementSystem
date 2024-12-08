@@ -38,8 +38,9 @@ void Organization::generateReport() const
                   << ", Name: " << product.getName()
                   << ", Category: " << product.getCategory()
                   << ", Price: " << product.getPrice()
+                  << ", Stock Level: " << product.getStockLevel()
                   << ", Threshold: " << product.getReorderThreshold()
-                  << ", Stock Level: " << product.getStockLevel() << '\n';
+                  << '\n';
     }
 
     std::cout << "\nProducts needing restock:\n";

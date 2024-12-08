@@ -15,27 +15,26 @@ int main()
     organization.addProduct(product1);
     organization.addProduct(product2);
 
-    organization.generateReport();
-
     // Create Suppliers
-    LocalSupplier localSupplier("Local Supplier");
-    GlobalSupplier globalSupplier("Global Supplier");
+    LocalSupplier localSupplier("Mero Electronic");
+    GlobalSupplier globalSupplier("Malcom Electronic");
 
-    // // Subscribe Suppliers
-    // localSupplier.subscribeToOrganization(&organization);
+    // Subscribe Suppliers
+    localSupplier.subscribeToOrganization(&organization);
     // globalSupplier.subscribeToOrganization(&organization);
 
     // Simulate stock level change
-    // product1.updateStockLevel(-7); // Drop below threshold
+    product1.updateStockLevel(-7); // Drop below threshold
 
-    // if (product1.needsRestock())
-    // {
-    //     int restockQuantity = product1.getReorderThreshold() - product1.getStockLevel();
-    //     organization.notifySuppliers(product1.getID(), restockQuantity);
-    // }
+    if (product1.needsRestock())
+    {
+        int restockQuantity = product1.getReorderThreshold() - product1.getStockLevel();
 
-    // // Generate Report
-    // organization.generateReport();
+        organization.notifySuppliers(product1.getID(), restockQuantity);
+    }
+
+    // Generate Report
+    organization.generateReport();
 
     return 0;
 }
