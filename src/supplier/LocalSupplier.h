@@ -8,6 +8,8 @@ class LocalSupplier : public Supplier
 public:
     LocalSupplier(const std::string &name);
 
+    std::string getName() const;
+
     void notifyRestock(int productID, int quantity) override;
 
     void subscribeToOrganization(Organization *organization) override;

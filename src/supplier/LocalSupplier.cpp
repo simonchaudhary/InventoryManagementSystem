@@ -6,6 +6,11 @@
 
 LocalSupplier::LocalSupplier(const std::string &name) : Supplier(name) {}
 
+std::string LocalSupplier::getName() const
+{
+    return name;
+}
+
 void LocalSupplier::notifyRestock(int productID, int quantity)
 {
 

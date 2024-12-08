@@ -8,6 +8,8 @@ class GlobalSupplier : public Supplier
 public:
     GlobalSupplier(const std::string &name);
 
+    std::string getName() const;
+
     void notifyRestock(int productID, int quantity) override;
 
     void subscribeToOrganization(Organization *organization) override;

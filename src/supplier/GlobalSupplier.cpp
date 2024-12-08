@@ -6,6 +6,11 @@
 
 GlobalSupplier::GlobalSupplier(const std::string &name) : Supplier(name) {}
 
+std::string GlobalSupplier::getName() const
+{
+    return name;
+}
+
 void GlobalSupplier::notifyRestock(int productID, int quantity)
 {
 
