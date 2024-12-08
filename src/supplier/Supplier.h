@@ -20,24 +20,4 @@ public:
     virtual void subscribeToOrganization(Organization *organization) = 0;
 };
 
-class LocalSupplier : public Supplier
-{
-public:
-    LocalSupplier(const std::string &name);
-
-    void notifyRestock(int productID, int quantity) override;
-
-    void subscribeToOrganization(Organization *organization) override;
-};
-
-class GlobalSupplier : public Supplier
-{
-public:
-    GlobalSupplier(const std::string &name);
-
-    void notifyRestock(int productID, int quantity) override;
-
-    void subscribeToOrganization(Organization *organization) override;
-};
-
 #endif // SUPPLIER_H

@@ -1,12 +1,15 @@
-#include "Organization.h"
 #include <iostream>
 #include <algorithm>
 
+#include "Organization.h"
+
+// Add a product to the inventory
 void Organization::addProduct(const Product &product)
 {
     products.push_back(product);
 }
 
+// Remove a product from the inventory
 void Organization::removeProduct(int productID)
 {
     products.erase(std::remove_if(products.begin(), products.end(),
@@ -15,8 +18,11 @@ void Organization::removeProduct(int productID)
                    products.end());
 }
 
+// Search for a product in the inventory
 Product *Organization::searchProduct(int productID)
 {
+    std::cout << "\nSearching for product with ID: " << productID << '\n';
+
     for (auto &product : products)
     {
         if (product.getID() == productID)
@@ -26,6 +32,23 @@ Product *Organization::searchProduct(int productID)
     }
 
     return nullptr;
+}
+
+// Get all Product
+void Organization::getAllProduct() const
+{
+    std::cout << "\nViewing All Products:\n";
+
+    for (const auto &product : products)
+    {
+        std::cout << "Product ID: " << product.getID()
+                  << ", Name: " << product.getName()
+                  << ", Category: " << product.getCategory()
+                  << ", Price: " << product.getPrice()
+                  << ", Stock Level: " << product.getStockLevel()
+                  << ", Threshold: " << product.getReorderThreshold()
+                  << '\n';
+    }
 }
 
 void Organization::generateReport() const
@@ -56,14 +79,16 @@ void Organization::generateReport() const
     }
 }
 
+// Add a supplier to the subscription list
 void Organization::addSupplier(Supplier *supplier)
 {
     suppliers.push_back(supplier);
 }
 
+// Notify suppliers to restock a product
 void Organization::notifySuppliers(int productID, int restockQuantity)
 {
-    std::cout << "!!! Notify Restock !!!\n";
+    std::cout << "\n!!! Notify Restock !!!\n";
 
     for (auto *supplier : suppliers)
     {

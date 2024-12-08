@@ -1,10 +1,10 @@
 #ifndef ORGANIZATION_H
 #define ORGANIZATION_H
 
+#include <vector>
+
 #include "../product/Product.h"
 #include "../supplier/Supplier.h"
-#include <vector>
-#include <unordered_map>
 
 class Organization
 {
@@ -13,6 +13,7 @@ private:
     std::vector<Supplier *> suppliers;
 
 public:
+    void getAllProduct() const;
     void addProduct(const Product &product);
     void removeProduct(int productID);
     Product *searchProduct(int productID);

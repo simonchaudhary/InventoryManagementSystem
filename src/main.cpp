@@ -1,8 +1,9 @@
 #include <iostream>
 
-#include "organization/Organization.cpp"
 #include "product/Product.cpp"
-#include "supplier/Supplier.cpp"
+#include "supplier/LocalSupplier.cpp"
+#include "supplier/GlobalSupplier.cpp"
+#include "organization/Organization.cpp"
 
 int main()
 {
@@ -16,6 +17,29 @@ int main()
     organization.addProduct(product1);
     organization.addProduct(product2);
 
+    organization.getAllProduct();
+
+    organization.generateReport();
+
+    Product *foundProduct = organization.searchProduct(101);
+
+    if (foundProduct)
+    {
+        // Product found, display details
+        std::cout << "Product Found:\n";
+        std::cout << "ID: " << foundProduct->getID() << '\n';
+        std::cout << "Name: " << foundProduct->getName() << '\n';
+        std::cout << "Category: " << foundProduct->getCategory() << '\n';
+        std::cout << "Price: " << foundProduct->getPrice() << '\n';
+        std::cout << "Stock Level: " << foundProduct->getStockLevel() << '\n';
+        std::cout << "Reorder Threshold: " << foundProduct->getReorderThreshold() << '\n';
+    }
+    else
+    {
+        // Product not found
+        std::cout << "Product with ID " << 101 << " not found in inventory.\n";
+    }
+
     // Create Suppliers
     LocalSupplier localSupplier("Mero Electronic");
     LocalSupplier localSupplier1("Aagan Computer and Electronic");
@@ -24,7 +48,7 @@ int main()
     // Subscribe Suppliers
     localSupplier.subscribeToOrganization(&organization);
     localSupplier1.subscribeToOrganization(&organization);
-    // globalSupplier.subscribeToOrganization(&organization);
+    globalSupplier.subscribeToOrganization(&organization);
 
     // Simulate stock level change
     product1.updateStockLevel(-7); // Drop below threshold
