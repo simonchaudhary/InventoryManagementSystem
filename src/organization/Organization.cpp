@@ -30,7 +30,7 @@ Product *Organization::searchProduct(int productID)
 
 void Organization::generateReport() const
 {
-    std::cout << "Inventory Report:\n";
+    std::cout << "\nInventory Report:\n";
 
     for (const auto &product : products)
     {
@@ -63,6 +63,8 @@ void Organization::addSupplier(Supplier *supplier)
 
 void Organization::notifySuppliers(int productID, int restockQuantity)
 {
+    std::cout << "!!! Notify Restock !!!\n";
+
     for (auto *supplier : suppliers)
     {
         supplier->notifyRestock(productID, restockQuantity);

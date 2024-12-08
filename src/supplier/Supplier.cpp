@@ -8,9 +8,9 @@ LocalSupplier::LocalSupplier(const std::string &name) : Supplier(name) {}
 
 void LocalSupplier::notifyRestock(int productID, int quantity)
 {
-    std::cout << "Notify Restock\n";
 
-    std::cout << "LocalSupplier " << name << " notified to restock Product " << productID
+    std::cout << "Local Suppliers: \n"
+              << name << " notified to restock Product " << productID
               << " with quantity " << quantity << ".\n";
 }
 
