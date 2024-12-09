@@ -28,25 +28,13 @@ void Menu::handleViewProducts()
 
 void Menu::handleAddProduct()
 {
-    int id, stock, threshold;
-    std::string name, category;
-    double price;
 
-    std::cout << "Enter Product ID: ";
-    std::cin >> id;
-    std::cout << "Enter Product Name: ";
-
-    Input::clearInputStream();
-
-    std::getline(std::cin, name);
-    std::cout << "Enter Product Category: ";
-    std::getline(std::cin, category);
-    std::cout << "Enter Product Price: ";
-    std::cin >> price;
-    std::cout << "Enter Stock Level: ";
-    std::cin >> stock;
-    std::cout << "Enter Reorder Threshold: ";
-    std::cin >> threshold;
+    int id = Input::getValidatedInt("Enter Product ID: ", 1);
+    std::string name = Input::getValidatedString("Enter Product Name: ");
+    std::string category = Input::getValidatedString("Enter Product Category: ");
+    double price = Input::getValidatedDouble("Enter Product Price: ", 0.01);
+    int stock = Input::getValidatedInt("Enter Stock Level: ", 0);
+    int threshold = Input::getValidatedInt("Enter Reorder Threshold: ", 0);
 
     organization.addProduct(Product(id, name, category, price, stock, threshold));
 
